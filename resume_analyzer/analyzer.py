@@ -1,5 +1,4 @@
 import pdfplumber
-import spacy
 from groq import Groq
 import json
 from decouple import config
@@ -62,6 +61,3 @@ def process_resume(pdf_path, job_description):
     except Exception as e:
         print(e)
         return None
-
-result = process_resume('/home/sagar/Django-Projects/resume-analyzer-project/core/resumes/Sagar_Nanera_RESUME_c6hKgWB.pdf', 'python developer')
-print(result)

@@ -9,11 +9,14 @@ from rest_framework.response import Response
 from .serializers import ResumeSerializer
 import traceback
 from .analyzer import process_resume
+from decouple import config
 
 
 class JobDescriptionAPIView(APIView):
     def get(self, request):
+        print('2222')
         try:
+            print('1111')
             job_descriptions = JobDescription.objects.all()
             serializer = JobDescriptionSerializer(job_descriptions, many=True)
             return Response(serializer.data)
@@ -79,3 +82,12 @@ class AnalyzeResumeAPI(APIView):
                 'message': str(e),
                 'data': {}
             })
+
+class TestAPI(APIView):
+    def get(self, request):
+        print("✅ TestAPI called successfully")
+        return Response({
+            'status': True,
+            'message': 'Hello, world!',
+            'data': {}
+        })
